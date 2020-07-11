@@ -84,7 +84,7 @@ set encoding=utf-8
 set updatetime=100
 
 
-call neomake#configure#automake('nrwi', 500)
+
 
 
 let mapleader="\<space>"
@@ -131,7 +131,7 @@ let b:ale_fixers = ['prettier', 'eslint']
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 " Use ALE and also some plugin 'foobar' as completion sources for all code.
-call deoplete#custom#option('sources',{'_': ['ale', 'foobar'],})
+
 
 let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
@@ -145,4 +145,5 @@ endif
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
-
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
